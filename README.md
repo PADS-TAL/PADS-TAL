@@ -1,7 +1,5 @@
 # PADS-TAL: Padding-Annealed Diffusion Sampling in Text-Aware Latent Space
 
-Official codebase for the paper **"PADS-TAL: Padding-Annealed Diffusion Sampling in Text-Aware Latent Space for Robust and Diverse Text-to-Music Generation"**.
-
 <p align="center">
   <a href="https://openreview.net/forum?id=c0iisI5tJj">
     <img src="https://img.shields.io/badge/Paper-OpenReview-blue" alt="Paper">
@@ -13,6 +11,8 @@ Official codebase for the paper **"PADS-TAL: Padding-Annealed Diffusion Sampling
     <img src="https://img.shields.io/badge/Project%20Page-Samples-green" alt="Project Page">
   </a>
 </p>
+
+Official codebase for the paper **"PADS-TAL: Padding-Annealed Diffusion Sampling in Text-Aware Latent Space for Robust and Diverse Text-to-Music Generation"**.
 
 ## Overview
 
