@@ -1,9 +1,11 @@
-# PADS-TAL: Padding-Annealed Diffusion Sampling in Text-Aware Latent Space for Robust and Diverse Text-to-Music Generation
+# PADS-TAL: Padding-Annealed Diffusion Sampling in Text-Aware Latent Space
 
 Official codebase for the paper **"PADS-TAL: Padding-Annealed Diffusion Sampling in Text-Aware Latent Space for Robust and Diverse Text-to-Music Generation"**.
 
 > ****Paper****: https://openreview.net/forum?id=c0iisI5tJj
+
 > ****Poster****: https://icml.cc/virtual/2026/poster/62907
+
 > ****Project page / samples****: https://pads-tal.github.io/PADS-TAL.io
 
 ## Overview
@@ -139,11 +141,11 @@ If you find this repository useful, please cite the paper.
 
 ```bibtex
 @inproceedings{
-anonymous2026padstal,
-title={{PADS}-{TAL}: Padding-Annealed Diffusion Sampling in Text-Aware Latent Space for Robust and Diverse Text-to-Music Generation},
-author={Anonymous},
-booktitle={Forty-third International Conference on Machine Learning},
-year={2026},
-url={https://openreview.net/forum?id=c0iisI5tJj}
+    anonymous2026padstal,
+    title={{PADS}-{TAL}: Padding-Annealed Diffusion Sampling in Text-Aware Latent Space for Robust and Diverse Text-to-Music Generation},
+    author={Anonymous},
+    booktitle={Forty-third International Conference on Machine Learning},
+    year={2026},
+    url={https://openreview.net/forum?id=c0iisI5tJj}
 }
 ```
