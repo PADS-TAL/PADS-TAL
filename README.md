@@ -2,11 +2,17 @@
 
 Official codebase for the paper **"PADS-TAL: Padding-Annealed Diffusion Sampling in Text-Aware Latent Space for Robust and Diverse Text-to-Music Generation"**.
 
-> ****Paper****: https://openreview.net/forum?id=c0iisI5tJj
-
-> ****Poster****: https://icml.cc/virtual/2026/poster/62907
-
-> ****Project page / samples****: https://pads-tal.github.io/PADS-TAL.io
+<p align="center">
+  <a href="https://openreview.net/forum?id=c0iisI5tJj">
+    <img src="https://img.shields.io/badge/Paper-OpenReview-blue" alt="Paper">
+  </a>
+  <a href="https://icml.cc/virtual/2026/poster/62907">
+    <img src="https://img.shields.io/badge/Poster-ICML%202026-orange" alt="Poster">
+  </a>
+  <a href="https://pads-tal.github.io/PADS-TAL.io">
+    <img src="https://img.shields.io/badge/Project%20Page-Samples-green" alt="Project Page">
+  </a>
+</p>
 
 ## Overview
 
