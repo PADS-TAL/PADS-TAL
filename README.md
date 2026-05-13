@@ -25,7 +25,7 @@ This repository provides the training, inference, and evaluation code for **PADS
 - **PADS**: perturbs only the padding-indexed subspace during sampling for controlled exploration with reduced semantic drift.
 - **TAL**: constructs a text-aware latent space that better preserves genre-consistent diversity.
 
-## Repository Structure
+## 1. Repository Structure
 
 ```text
 project_root/
@@ -42,7 +42,7 @@ project_root/
 - `pads_tal/inference.py`: sampling with PADS or CADS
 - `pads_tal/eval.py`: evaluation with selected metrics
 
-## Installation
+## 2. Installation
 
 Tested on **Ubuntu 22.04**, **CUDA 11.8**, **Python 3.10.19**, and **PyTorch 2.7.1**.
 
@@ -58,9 +58,9 @@ git clone https://github.com/Stability-AI/stable-audio-metrics.git \
           pads_tal/tools/stable-audio-metrics
 ```
 
-## Training
+## 3. Training
 
-### 1) Train TAL (MoE-mVAE)
+### a) Train TAL (MoE-mVAE)
 
 ```bash
 python3 ./pads_tal/train.py \
@@ -74,7 +74,7 @@ python3 ./pads_tal/train.py \
     --name mvae_train_1
 ```
 
-### 2) Train diffusion model in TAL space
+### b) Train diffusion model in TAL space
 
 ```bash
 python3 ./pads_tal/train.py \
@@ -88,9 +88,9 @@ python3 ./pads_tal/train.py \
     --name mvae_dm_train_1
 ```
 
-## Inference
+## 4. Inference
 
-### PADS
+### a) PADS
 
 ```bash
 python3 ./pads_tal/inference.py \
@@ -102,7 +102,7 @@ python3 ./pads_tal/inference.py \
     --save-wav
 ```
 
-### CADS
+### b) CADS
 
 ```bash
 python3 ./pads_tal/inference.py \
@@ -114,7 +114,7 @@ python3 ./pads_tal/inference.py \
     --save-wav
 ```
 
-## Evaluation
+## 5. Evaluation
 
 ```bash
 python3 ./pads_tal/eval.py \
@@ -139,7 +139,7 @@ Available modes for `--modes`:
 > **Note**  
 > IPR evaluation requires precomputed reference embeddings. Please generate the reference files with `save_ref()` in `ipr.py` and update `ipr_ref_path` before evaluation.
 
-## Notes
+## 6. Notes
 
 - Training and sampling are controlled through JSON config files in `config/`.
 - Input benchmark CSVs for inference and evaluation are expected under `input_inf/eval/`.
