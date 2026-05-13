@@ -14,6 +14,10 @@
 
 Official codebase for the paper **"PADS-TAL: Padding-Annealed Diffusion Sampling in Text-Aware Latent Space for Robust and Diverse Text-to-Music Generation"**.
 
+<div>
+<img width="12054" height="3737" alt="Image" src="https://github.com/user-attachments/assets/157878e7-bb0d-4e7c-b770-e320160cbf64" />
+</div>
+
 ## Overview
 
 This repository provides the training, inference, and evaluation code for **PADS-TAL**, a unified pipeline for robust and diverse text-to-music generation.
