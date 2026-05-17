@@ -1,0 +1,178 @@
+{
+    "model_type": "autoencoder_mvae",
+    "sample_size": 221184,
+    "sample_rate": 44100,
+    "audio_channels": 2,
+    "model": {
+        "encoder_audio": {
+            "type": "oobleck",
+            "config": {
+                "in_channels": 2,
+                "channels": 64,
+                "c_mults": [1, 2, 4, 8, 16],
+                "strides": [2, 4, 4, 8, 8],
+                "latent_dim": 64,
+                "use_snake": true
+            }
+        },
+        "encoder_text": {
+            "type": "t5",
+            "config": {
+                "t5_model_name": "t5-base",
+                "latent_dim" : 216,
+                "max_length" : 128,
+                "target_length":32
+            }
+        },
+        "private_audio": {
+            "type": "oobleck",
+            "config": {
+                "in_channels": 2,
+                "channels": 128,
+                "c_mults": [1, 2, 4, 8, 16],
+                "strides": [2, 4, 4, 8, 8],
+                "latent_dim": 128,
+                "use_snake": true
+            }
+        },
+        "private_text": {
+            "type": "t5",
+            "config": {
+                "t5_model_name": "t5-base",
+                "latent_dim" : 216,
+                "max_length" : 128,
+                "target_length":32
+            }
+        },
+        "decoder_audio": {
+            "type": "oobleck",
+            "config": {
+                "out_channels": 2,
+                "channels": 128,
+                "c_mults": [1, 2, 4, 8, 16],
+                "strides": [2, 4, 4, 8, 8],
+                "latent_dim": 96,
+                "use_snake": true,
+                "final_tanh": false
+            }
+        },
+        "decoder_text": {
+            "type": "normal",
+            "config": {
+                "latent_dim":216,
+                "target_length":32,
+                "max_length":128
+            }
+        },
+        "bottleneck": {
+            "type": "vae"
+        },
+        "latent_dim": 96,
+        "downsampling_ratio": 2048,
+        "io_channels": 2
+    },
+    "training": {
+        "learning_rate": 0.5e-4,
+        "warmup_steps": 2000,
+        "warmup_mode":"full",
+        "clip_grad_norm_gen" : 1000.0,
+        "clip_grad_norm_disc" : 500.0,
+        "clip_grad_print":50,
+        "separate_disc":true,
+        "use_ema": true,
+        "optimizer_configs": {
+            "autoencoder": {
+                "optimizer": {
+                    "type": "AdamW",
+                    "config": {
+                        "betas": [0.8, 0.99],
+                        "lr": 0.5e-4,
+                        "weight_decay": 1e-3
+                    }
+                },
+                "scheduler": {
+                    "type": "InverseLR",
+                    "config": {
+                        "inv_gamma": 200000,
+                        "power": 0.5,
+                        "warmup": 0.999
+                    }
+                }
+            },
+            "discriminator": {
+                "optimizer": {
+                    "type": "AdamW",
+                    "config": {
+                        "betas": [0.8, 0.99],
+                        "lr": 1.0e-4,
+                        "weight_decay": 1e-3
+                    }
+                },
+                "scheduler": {
+                    "type": "InverseLR",
+                    "config": {
+                        "inv_gamma": 200000,
+                        "power": 0.5,
+                        "warmup": 0.999
+                    }
+                }
+            }
+        },
+        "loss_configs": {
+            "discriminator": {
+                "type": "encodec",
+                "config": {
+                    "filters": 64,
+                    "n_ffts": [2048, 1024, 512, 256, 128],
+                    "hop_lengths": [512, 256, 128, 64, 32],
+                    "win_lengths": [2048, 1024, 512, 256, 128],
+                    "normalize_losses" : true
+                },
+                "weights": {
+                    "adversarial": 0.8,
+                    "feature_matching": 2.0
+                }
+            },
+            "spectral": {
+                "type": "mrstft",
+                "config": {
+                    "fft_sizes": [2048, 1024, 512, 256, 128, 64, 32],
+                    "hop_sizes": [512, 256, 128, 64, 32, 16, 8],
+                    "win_lengths": [2048, 1024, 512, 256, 128, 64, 32],
+                    "perceptual_weighting": true
+                },
+                "weights": {
+                    "mrstft": 1.0
+                }
+            },
+            "time": {
+                "type": "l1",
+                "weights": {
+                    "l1": 1e-4
+                }
+            },
+            "bottleneck": {
+                "type": "kl",
+                "weights": {
+                    "kl_shared_audio": 2e-5,
+                    "kl_shared_text": 2e-5,
+                    "kl_audio": 2e-5,
+                    "kl_text": 2e-5
+                }
+            },
+            "cross_entropy": {
+                "weights": {
+                    "text": 0.3
+                }
+            },
+            "latent_align":{
+                "weights": {
+                    "text_image": 0.1
+                }
+            }
+        },
+        "demo": {
+            "demo_every": 5000
+        }
+    }
+}

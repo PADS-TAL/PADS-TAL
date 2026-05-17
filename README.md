@@ -33,6 +33,7 @@ project_root/
 ├── input_inf/
 ├── pads_tal/
 ├── requirements.txt
+├── LICENSE
 └── README.md
 ```
 
@@ -119,7 +120,7 @@ python3 ./pads_tal/inference.py \
 ```bash
 python3 ./pads_tal/eval.py \
     --result-path evaluated \
-    --root-path output_inf/T1/test_single \
+    --root-path output_inf/test_single \
     --modes ipr \
     --ext .wav \
     --clap-basemodel music \
@@ -151,9 +152,9 @@ If you find this repository useful, please cite the paper.
 
 ```bibtex
 @inproceedings{
-    anonymous2026padstal,
+    yoo2026padstal,
     title={{PADS}-{TAL}: Padding-Annealed Diffusion Sampling in Text-Aware Latent Space for Robust and Diverse Text-to-Music Generation},
-    author={Anonymous},
+    author={Yoo, Taekoan and Jung, Wonkyung and Kim, Kyunghun and Kong, Kyeongbo},
     booktitle={Forty-third International Conference on Machine Learning},
     year={2026},
     url={https://openreview.net/forum?id=c0iisI5tJj}
